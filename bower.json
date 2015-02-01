@@ -1,0 +1,12 @@
+{
+  "name": "bozlak",
+  "version": "0.0.1",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "jquery": "1.11.2"
+  }
+}

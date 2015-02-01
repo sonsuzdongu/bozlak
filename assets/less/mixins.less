@@ -1,0 +1,47 @@
+.panel-variant(@border; @heading-text-color; @heading-bg-color; @heading-border) {
+  border-color: @border;
+
+  & > .panel-heading {
+    color: @heading-text-color;
+    background-color: #FFF;
+    border-top: 1px solid @color-image-border;
+
+    + .panel-collapse > .panel-body {
+      border-top-color: @border;
+      margin-bottom: 20px;
+    }
+    .badge {
+      color: @heading-bg-color;
+      background-color: @heading-text-color;
+    }
+  }
+  & > .panel-footer {
+    + .panel-collapse > .panel-body {
+      border-bottom-color: @border;
+    }
+  }
+}
+
+
+.transition {
+    -webkit-transition: all 0.3s ease-in-out, width 0, height 0, top 0, left 0;
+    -moz-transition: all 0.3s ease-in-out, width 0, height 0, top 0, left 0;
+    -o-transition: all 0.3s ease-in-out, width 0, height 0, top 0, left 0;
+    transition: all 0.3s ease-in-out, width 0, height 0, top 0, left 0; 
+}
+
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

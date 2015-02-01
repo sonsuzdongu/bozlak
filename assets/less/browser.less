@@ -1,0 +1,295 @@
+.gradient-bg() {
+    background: #1e5799; /* Old browsers */
+    background: linear-gradient(to bottom, #1e5799 0%,#2989d8 4%,#207cca 57%,#207cca 57%,#7db9e8 100%); /* W3C */
+}
+
+html, body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    .gradient-bg();
+}
+
+#bozlak {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 2px solid  #1e5799;;
+    
+    &.full-screen {
+        margin: 0;
+    }
+}
+
+@top-bar-height: 32px;
+@address-bar-height: 30px;
+
+#bozlak-main {
+    padding-bottom: 20px;
+    border-top: (@top-bar-height + @address-bar-height) solid transparent;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    top: (@address-bar-height * -1);
+}
+
+.to-left {
+    float: left;
+}
+
+.to-right {
+    float: right;
+}
+
+
+iframe {
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
+
+
+#bozlak-top-bar {
+    .no-select();
+    cursor: move !important;
+    -webkit-app-region: drag;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: @top-bar-height;
+    overflow: hidden;
+    z-index: 1035;
+
+    background: #fbfaf8;
+
+    .tabs {
+        .tab-item {
+            z-index: 9;
+            -webkit-app-region: no-drag; 
+            cursor: default;
+
+            position: relative;
+            margin: 0 2px 0 10px;
+
+            transition: .5s;
+            display: inline-block;
+            margin-right: 5px;
+            max-width: 220px;
+            min-width: 120px;
+            height: 15px;
+            position: relative;
+            top: 5px;
+            padding: 2px 2px 0 4px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 500;
+
+            color: rgb(0, 0, 0);
+            font-size: 12px;
+            padding: 5px;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+            background: transparent;
+
+            a.select {
+                cursor: default;
+                display: inline-block;
+                height: 22px;
+                color: #5D5D5D;
+                text-decoration: none;
+                width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .close {
+                font-size: 10px;
+                line-height: 12px;
+                color: #BBB;
+                display: inline-block;
+                position: absolute;
+                right: 5px;
+                top: 5px;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: transparent;
+                text-decoration: none;
+
+                &:hover {
+                    background: #BBB;
+                    color: #FFF;
+                }
+            }
+
+            &.selected {
+                background: linear-gradient(0deg, rgb(237, 242, 239) 20%, rgb(249, 249, 249) 100%);
+                box-shadow:         0px 2px 1px rgba(50, 50, 50, 0.45);
+            }
+            
+
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                left: -7px;
+                height: 12px;
+                width: 3px;
+                background: transparent;
+                border-left: 1px solid #BBB;
+                z-index:99999;
+            }
+        }
+    }
+
+    #addTab {
+        border: none;
+        background: none;
+        width: 15px;
+        position: relative;
+        top: 10px;
+        cursor: pointer;
+
+        -webkit-app-region: no-drag; 
+        cursor: pointer;
+
+    }
+
+    .action-buttons {
+        position: relative;
+        top: 7px;
+        right: 2px;
+        a {
+            -webkit-app-region: no-drag; 
+
+            cursor: pointer;
+            &:before {
+                display: inline-block;
+                font-family: 'icomoon';
+                font-size: 8px;
+                color: #FFF;
+                width: 14px;
+                height: 14px;
+                line-height: 14px;
+                text-align: center;
+                border: 1px solid #BCBCBC;
+                border-radius: 4px;
+                overflow: hidden;
+                .gradient-bg();
+            }
+        }
+
+        #bozlak-close:before {
+            .icon-Close_before();
+        }
+
+        #bozlak-minimize:before {
+            .icon-ArrowBlackDown_before();
+        }
+
+        #bozlak-fullscreen:before {
+            .icon-ArrowNextL_before();
+        }
+    }
+
+
+}
+
+#bozlak-address-bar {
+    background: linear-gradient(0deg, rgb(237, 242, 239) 20%, rgb(249, 249, 249) 100%);
+    position: absolute;
+    left: 0;
+    top: (@top-bar-height);
+    width: 100%;
+    height: @address-bar-height;
+    overflow: hidden;
+    z-index: 1035;
+    padding-left: 100px;
+    position: relative;
+    box-sizing: border-box;
+
+    > * {
+        margin-top: 5px;
+    }
+
+    .action-buttons {
+        .no-select();
+        position: absolute;
+        left: 0;
+        padding-left: 5px;
+
+        a {
+            text-decoration: none;
+            display: inline-block;
+            line-height: 22px;
+            margin:0 5px;
+            color: #4896D7;
+
+            opacity: 0.5;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+
+#address-form {
+    position: relative;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    padding-right: 100px;
+    input {
+        height: 22px;
+        width: 100%;
+        padding: 2px 5px;
+        box-sizing: border-box;
+        border: 1px solid #BBB;
+        border-right: none;
+    }
+
+    button {
+        box-sizing: border-box;
+        display: block;
+        z-index: 99999;
+        position: absolute;
+        right: 10px;
+        top: 0;
+        width: 90px;
+        height: 22px;
+        padding: 0;
+        border: 1px solid #BBB;
+        background: #EDF2EF;
+    }
+}
+
+.close:hover {
+    background-color: #dc2c0f;
+}
+
+#bozlak-footer {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: blue;
+    height: 50px;
+    z-index: 9999;
+}
