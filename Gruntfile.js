@@ -208,7 +208,7 @@ module.exports = function (grunt) {
     shell: {
         build: {
             command: function () {
-                return 'mkdir -p build; zip -r build/bozlak.nw index.html  package.json  public/';
+                return 'mkdir -p build; zip -r build/package.nw index.html  package.json  public/';
             }
         }
     }
