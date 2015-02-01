@@ -11,7 +11,7 @@ bozlak.init = function () {
     bozlak.globals.win = win; //global win object
     bozlak.globals.currentTab = null; //variable to hold current open tabs' key
     bozlak.globals.pages = {}; //stack for loaded pages
-    bozlak.globals.currentKey = 1; //initial page id. incremented on each newTab call
+    bozlak.globals.currentKey = 0; //initial page id. incremented on each newTab call
 
     bozlak.globals.homePage = "http://google.com";
 
@@ -139,7 +139,7 @@ bozlak.init.newTab = function (url) {
 
     var markup = '<div class="tab-item">' +
                     '<a href="#" class="select">' + 
-                    'Tab ' + bozlak.globals.currentKey + 
+                    'Empty - ' + bozlak.globals.currentKey + 
                     '</a>' +
                     '<a href="#" class="close">x</a>' +
                  '</div>';

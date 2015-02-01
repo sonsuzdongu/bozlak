@@ -6,6 +6,7 @@ module.exports = function (grunt) {
   var publicDir = 'public/static';
   var bowerDir = 'bower_components';
   var assetsImgDir = 'assets/img';
+  var buildDir = 'build';
 
   // Force use of Unix newlines
   grunt.util.linefeed = '\n';
@@ -17,7 +18,8 @@ module.exports = function (grunt) {
 
     // Task configuration.
     clean: {
-      dist: publicDir
+      dist: publicDir,
+      build: buildDir
     },
 
     jshint: {
@@ -146,6 +148,21 @@ module.exports = function (grunt) {
         cwd: 'assets/img/',
         src: '**',
         dest: publicDir + '/img'
+      },
+      build_public: {
+        expand: true,
+        cwd: 'public/',
+        src: '**',
+        dest: buildDir + '/public'
+      },
+      build_index: {
+        src: 'index.html',
+        dest: buildDir + '/index.html'
+      },
+
+      build_package: {
+        src: 'package.json',
+        dest: buildDir + '/package.json'
       }
     },
 
@@ -186,7 +203,16 @@ module.exports = function (grunt) {
         files: assetsLessDir + '/**/*.less',
         tasks: 'less'
       }
+    },
+
+    shell: {
+        build: {
+            command: function () {
+                return 'mkdir -p build; zip -r build/bozlak.nw index.html  package.json  public/';
+            }
+        }
     }
+
   });
 
 
@@ -218,10 +244,12 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-css', ['less-compile', 'csscomb:dist', 'cssmin:minifyCore']);
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy', 'dist-js']);
+  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'copy:img', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['clean:dist', 'copy', 'test', 'sprite', 'uglify', 'imagemin']);
+  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:img', 'test', 'sprite', 'uglify', 'imagemin']);
+  
+  grunt.registerTask('build-package', ['clean:build', 'shell:build']);
 
   // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z

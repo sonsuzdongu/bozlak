@@ -8,4 +8,5 @@ Then
     npm install
     bower install
     grunt
-    /path/to/nw.js/nw .
+    grunt build-package
+    /path/to/nw.js/nw ./build/bozlak.nw
