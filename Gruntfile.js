@@ -49,6 +49,12 @@ module.exports = function (grunt) {
         dest: publicDir + '/js/external.js'
       },
 
+      node: {
+        src: [
+          assetsJsDir + '/node.js',
+        ],
+        dest: publicDir + '/js/node.js'
+      },
 
       bozlak: {
         src: [
@@ -149,21 +155,6 @@ module.exports = function (grunt) {
         src: '**',
         dest: publicDir + '/img'
       },
-      build_public: {
-        expand: true,
-        cwd: 'public/',
-        src: '**',
-        dest: buildDir + '/public'
-      },
-      build_index: {
-        src: 'index.html',
-        dest: buildDir + '/index.html'
-      },
-
-      build_package: {
-        src: 'package.json',
-        dest: buildDir + '/package.json'
-      }
     },
 
 

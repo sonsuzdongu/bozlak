@@ -20,21 +20,21 @@ bozlak.contextMenus.input = function () {
     var cut = new gui.MenuItem({
         label: "Deneme",
         click: function() {
-            bozlak.globals.iframes[bozlak.globals.currentTab].iframe.contentDocument.execCommand("cut");
+            bozlak.globals.pages[bozlak.globals.currentTab].get(0).contentDocument.execCommand("cut");
         }
     });
 
     var copy = new gui.MenuItem({
         label: "Copy",
         click: function() {
-            bozlak.globals.iframes[bozlak.globals.currentTab].iframe.contentDocument.execCommand("copy");
+            bozlak.globals.pages[bozlak.globals.currentTab].get(0).contentDocument.execCommand("copy");
         }
     });
 
     var paste = new gui.MenuItem({
         label: "Paste",
         click: function() {
-            bozlak.globals.iframes[bozlak.globals.currentTab].iframe.contentDocument.execCommand("paste");
+            bozlak.globals.pages[bozlak.globals.currentTab].get(0).contentDocument.execCommand("paste");
         }
     });
 
@@ -65,21 +65,21 @@ bozlak.contextMenus._default = function () {
     var cut = new gui.MenuItem({
         label: "Cut",
         click: function() {
-            bozlak.globals.iframes[bozlak.globals.currentTab].iframe.contentDocument.execCommand("cut");
+            bozlak.globals.pages[bozlak.globals.currentTab].get(0).contentDocument.execCommand("cut");
         }
     });
 
     var copy = new gui.MenuItem({
         label: "Copy",
         click: function() {
-            bozlak.globals.iframes[bozlak.globals.currentTab].iframe.contentDocument.execCommand("copy");
+            bozlak.globals.pages[bozlak.globals.currentTab].get(0).contentDocument.execCommand("copy");
         }
     });
 
     var paste = new gui.MenuItem({
         label: "Paste",
         click: function() {
-            bozlak.globals.iframes[bozlak.globals.currentTab].iframe.contentDocument.execCommand("paste");
+            bozlak.globals.pages[bozlak.globals.currentTab].get(0).contentDocument.execCommand("paste");
         }
     });
 

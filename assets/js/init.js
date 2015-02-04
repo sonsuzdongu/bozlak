@@ -31,6 +31,14 @@ bozlak.init = function () {
     bozlak.init.newTab(bozlak.globals.homePage);
 };
 
+bozlak.init.showError = function (msg) {
+    $.get("errors/index.html", function (r) {
+        var $error = $(r);
+        $error.filter("#error-text").html(msg);
+        $("iframe:visible").contents().find(">:first").html($error);
+    });
+};
+
 /**
  * bind new tab, close tab and select tab events
  */
@@ -108,10 +116,25 @@ bozlak.init.newTab = function (url) {
 
         //TODO: we should implement a timeout handler
         //is iframe loaded succesfully?
-        var success = !!e.target.contentWindow.document.getElementsByTagName('body')[0].innerHTML.length;
-        //TODO: show some "not found" page on !success
+
+
+        var success = true;
+
+        if (!e.target.contentWindow.document.getElementsByTagName('body') 
+            || !e.target.contentWindow.document.getElementsByTagName('body')[0]
+            || !e.target.contentWindow.document.getElementsByTagName('body')[0].innerHTML
+            || !e.target.contentWindow.document.getElementsByTagName('body')[0].innerHTML.length) {
+
+            success = false;
+        }
 
         $iframe.removeClass("iframe-loading");
+
+        if (!success) {
+            bozlak.init.showError("404: Sayfa bulunamıyor");
+            return true;
+        }
+
 
         //bind contextmenu events
         contentWindow.addEventListener('contextmenu', function (e) {
@@ -236,6 +259,10 @@ bozlak.init.bindAddressBarButtons = function () {
         e.preventDefault();
         globals.pages[globals.currentTab].contentWindow().location.reload();
     });
+};
+
+window._showException = function (error) {
+    bozlak.init.showError("Beklenmeyen bir hata oluştu: " + error.toString());
 };
 
 bozlak.init();
